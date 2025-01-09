@@ -98,17 +98,7 @@
       "height": 720.00,
       "name": "5bc3bc8f22493be33644",
       "ordinal": 4,
-      "visualContainers": [
-        {
-          "config": "{\"name\":\"6c0a3d4859a2f5d8b87a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10,\"y\":0,\"width\":280,\"height\":280,\"z\":0,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"hundredPercentStackedBarChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Country Region.Sales Region\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Cost Element.Cost Element Sub Group)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c1\",\"Entity\":\"Cost Element\",\"Type\":0},{\"Name\":\"c\",\"Entity\":\"Country Region\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Sales Region\"},\"Name\":\"Country Region.Sales Region\",\"NativeReferenceName\":\"Sales Region\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c1\"}},\"Property\":\"Cost Element Sub Group\"}},\"Function\":5},\"Name\":\"CountNonNull(Cost Element.Cost Element Sub Group)\",\"NativeReferenceName\":\"Count of Cost Element Sub Group\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c1\"}},\"Property\":\"Cost Element Sub Group\"}},\"Function\":5}}}]},\"hasDefaultSort\":true}}",
-          "filters": "[]",
-          "height": 280.00,
-          "width": 280.00,
-          "x": 10.00,
-          "y": 0.00,
-          "z": 0.00
-        }
-      ],
+      "visualContainers": [],
       "width": 1280.00
     },
     {
