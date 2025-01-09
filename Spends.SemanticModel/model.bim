@@ -1,0 +1,1413 @@
+{
+  "compatibilityLevel": 1550,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.138.1452.0 (24.11)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Business Area\",\"Cost Element\",\"Country Region\",\"Date\",\"Department\",\"Fact\",\"IT Area\",\"Scenario\",\"Range\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "relationships": [
+      {
+        "name": "5eb17777-e9c8-493b-9d81-c5adb900e09a",
+        "fromColumn": "Scenario ID",
+        "fromTable": "Fact",
+        "toColumn": "Scenario ID",
+        "toTable": "Scenario"
+      },
+      {
+        "name": "16eae15a-3aea-445b-94b6-43eb0d1c86b0",
+        "fromColumn": "IT Sub Area ID",
+        "fromTable": "Fact",
+        "toColumn": "IT Sub Area ID",
+        "toTable": "IT Area"
+      },
+      {
+        "name": "c4633d95-838e-4156-a8c1-906d157a153f",
+        "fromColumn": "Business Area ID",
+        "fromTable": "Fact",
+        "toColumn": "Business Area ID",
+        "toTable": "Business Area"
+      },
+      {
+        "name": "8f584f25-177a-4def-ac05-f3ba08364533",
+        "fromColumn": "Country/Region ID",
+        "fromTable": "Fact",
+        "toColumn": "Country/Region ID",
+        "toTable": "Country Region"
+      },
+      {
+        "name": "f18fc136-4954-40db-9c7a-08bab06c5a8d",
+        "fromColumn": "Cost Element ID",
+        "fromTable": "Fact",
+        "toColumn": "Cost Element ID",
+        "toTable": "Cost Element"
+      },
+      {
+        "name": "3a0ed39a-366d-407a-ade6-67c9755849f8",
+        "fromColumn": "Department",
+        "fromTable": "Fact",
+        "toColumn": "Department",
+        "toTable": "Department"
+      },
+      {
+        "name": "b8fa9cc0-0e1d-45c7-853c-1533595a20b0",
+        "fromColumn": "Date",
+        "fromTable": "Fact",
+        "toColumn": "Date",
+        "toTable": "Date"
+      },
+      {
+        "name": "9c249f02-e6dc-4107-8564-81d8f98ee1c6",
+        "fromColumn": "Date",
+        "fromTable": "Date",
+        "joinOnDateBehavior": "datePartOnly",
+        "toColumn": "Date",
+        "toTable": "LocalDateTable_c659a3fc-ad91-4f80-b458-6b22a6d14a66"
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "Business Area",
+        "columns": [
+          {
+            "name": "Business Area",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4591f1ec-7dfc-4837-95f4-525fc7452ae7",
+            "sourceColumn": "Business Area",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Business Area ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "isHidden": true,
+            "lineageTag": "2fe3a0fc-5beb-44b9-8589-0bef1e342b4f",
+            "sourceColumn": "Business Area ID",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "20554ca2-da22-41ec-8bd9-5f37ab96c7a0",
+        "partitions": [
+          {
+            "name": "Business Area",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\mad\\Dropbox\\Work\\Obvience\\IP\\IT\\Data\\Clean\\Data.xlsx\"), null, true),",
+                "    Sheet = Source{[Item=\"Business Area\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Sheet),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Promoted Headers\", {{\"Business Area\", \"Business Area\"}, {\"Business Area ID\", \"Business Area ID\"}}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\", {{\"Business Area\", type text}, {\"Business Area ID\", type number}})",
+                " in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Cost Element",
+        "columns": [
+          {
+            "name": "Cost element name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "315594ed-0daa-47bf-be41-d08ed0fb0005",
+            "sourceColumn": "Cost element name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Cost Element Group",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1c2bde5a-1b2d-438b-b550-b77303ce2a1e",
+            "sourceColumn": "Cost Element Group",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Cost Element Sub Group",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7d6417fd-b119-4d00-96a0-31afae897568",
+            "sourceColumn": "Cost Element Sub Group",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Cost Element ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "double",
+            "isHidden": true,
+            "lineageTag": "cd9ae72d-6157-4e93-84c0-ab5ef803d48c",
+            "sourceColumn": "Cost Element ID",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "e780de12-1106-4fac-be79-10d263008b86",
+        "partitions": [
+          {
+            "name": "Cost Element",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\mad\\Dropbox\\Work\\Obvience\\IP\\IT\\Data\\Clean\\Data.xlsx\"), null, true),",
+                "    Sheet = Source{[Item=\"Cost Element\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Sheet),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Promoted Headers\", {{\"Cost element name\", \"Cost element name\"}, {\"Cost Element Group\", \"Cost Element Group\"}, {\"Cost Element Sub Group\", \"Cost Element Sub Group\"}, {\"Cost Element ID\", \"Cost Element ID\"}}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\", {{\"Cost element name\", type text}, {\"Cost Element Group\", type text}, {\"Cost Element Sub Group\", type text}, {\"Cost Element ID\", type number}})",
+                " in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Country Region",
+        "columns": [
+          {
+            "name": "Sales Region",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "Country",
+            "dataType": "string",
+            "lineageTag": "276691df-2ad9-45ab-9f40-f91a988b5231",
+            "sourceColumn": "Sales Region",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country/Region",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "Country",
+            "dataType": "string",
+            "lineageTag": "ea7461fc-61ef-4085-a435-29cae14acebd",
+            "sourceColumn": "Country/Region",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country/Region ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "isHidden": true,
+            "lineageTag": "8f5e42a2-90b1-4b0e-a032-900bc0f41b15",
+            "sourceColumn": "Country/Region ID",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "f5c46910-df35-443d-be37-937c605e1239",
+        "partitions": [
+          {
+            "name": "Country",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\mad\\Dropbox\\Work\\Obvience\\IP\\IT\\Data\\Clean\\Data.xlsx\"), null, true),",
+                "    Sheet = Source{[Item=\"Country\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Sheet),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Promoted Headers\", {{\"Region\", \"Sales Region\"}, {\"Country\", \"Country/Region\"}, {\"Country ID\", \"Country/Region ID\"}}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\", {{\"Sales Region\", type text}, {\"Country/Region\", type text}, {\"Country/Region ID\", type number}})",
+                " in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Date",
+        "annotations": [
+          {
+            "name": "__PBI_LegacyCustomDateTable",
+            "value": "true"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isHidden": true,
+            "isKey": true,
+            "lineageTag": "b5041ac2-a830-4938-a8dd-606ddb11c145",
+            "sourceColumn": "Date",
+            "summarizeBy": "none",
+            "variations": [
+              {
+                "name": "Variation",
+                "defaultHierarchy": {
+                  "hierarchy": "Date Hierarchy",
+                  "table": "LocalDateTable_c659a3fc-ad91-4f80-b458-6b22a6d14a66"
+                },
+                "isDefault": true,
+                "relationship": "9c249f02-e6dc-4107-8564-81d8f98ee1c6"
+              }
+            ]
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "f8b2d0a9-b11c-4631-9255-1c2ad4dc7a4a",
+            "sourceColumn": "Year",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Period",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "de5281a9-3ef1-4183-a58e-5ad88c16cf13",
+            "sourceColumn": "Period",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": "Format([Date],\"MMM\")",
+            "isDataTypeInferred": true,
+            "lineageTag": "6e3a150b-8173-440d-af99-657155644df0",
+            "sortByColumn": "Period",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "dataCategory": "Time",
+        "lineageTag": "862318f7-551a-4379-ac89-8647a25f938c",
+        "partitions": [
+          {
+            "name": "Date",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\mad\\Dropbox\\Work\\Obvience\\IP\\IT\\Data\\Clean\\Data.xlsx\"), null, true),",
+                "    Sheet = Source{[Item=\"Date\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Sheet),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Promoted Headers\", {{\"Date\", \"Date\"}, {\"Year\", \"Year\"}, {\"Period\", \"Period\"}}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\", {{\"Date\", type datetime}, {\"Year\", Int64.Type}, {\"Period\", Int64.Type}})",
+                " in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Department",
+        "columns": [
+          {
+            "name": "VP",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "484c2aaa-f64c-4951-84d6-af311eef20ab",
+            "sourceColumn": "VP",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Department",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "f9e3889e-fbf5-43f3-92c2-2fd1851abc13",
+            "sourceColumn": "Department",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "972ec73c-0e31-4404-839b-f2b7b158b60e",
+        "partitions": [
+          {
+            "name": "Department",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\mad\\Dropbox\\Work\\Obvience\\IP\\IT\\Data\\Clean\\Data.xlsx\"), null, true),",
+                "    Sheet = Source{[Item=\"Department\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Sheet),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Promoted Headers\", {{\"VP\", \"VP\"}, {\"Department\", \"Department\"}}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\", {{\"VP\", type text}, {\"Department\", Int64.Type}})",
+                " in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact",
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "34a63622-82f2-4972-995d-545388835da0",
+            "sourceColumn": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Value",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "71e11e69-a844-4c50-b80b-001db73178e9",
+            "sourceColumn": "Value",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Department",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "4de25641-a3af-4e73-88de-0b3ff9eeb95d",
+            "sourceColumn": "Department",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Cost Element ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "546e437e-8294-4390-9dff-2acce68c9195",
+            "sourceColumn": "Cost Element ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country/Region ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "454d8b15-195b-4b06-bac6-7919fb950e9e",
+            "sourceColumn": "Country/Region ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Business Area ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "291194a1-f134-467a-8a1b-041df96a29fa",
+            "sourceColumn": "Business Area ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IT Sub Area ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "92f4a1ed-e08d-47ec-a637-02a82bb33484",
+            "sourceColumn": "IT Sub Area ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Scenario ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "6b4a4458-c250-4016-9c59-0aef15142370",
+            "sourceColumn": "Scenario ID",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "0d7c81d2-5b89-4a77-981d-d352c6981b6d",
+        "measures": [
+          {
+            "name": "Amount",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "TOTALYTD(SUM([Value]), 'Date'[Date])*.3",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "lineageTag": "7f557542-cc38-46ec-b9cb-0be2dcdb9983"
+          },
+          {
+            "name": "Actual",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "CALCULATE([Amount], Scenario[ScenarioDescription]=\"Actual\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "lineageTag": "19e8393c-8c13-4477-b42a-d72778269933"
+          },
+          {
+            "name": "LE1",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "CALCULATE([Amount], Scenario[ScenarioDescription]=\"Latest Estimate 1\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "lineageTag": "aa7e7c78-b64b-4090-be4e-be8625265010"
+          },
+          {
+            "name": "LE2",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "CALCULATE([Amount], Scenario[ScenarioDescription]=\"Latest Estimate 2\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "lineageTag": "ff3feaee-2a0d-47f1-94e2-85f98426ad17"
+          },
+          {
+            "name": "LE3",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "CALCULATE([Amount], Scenario[ScenarioDescription]=\"Latest Estimate 3\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "lineageTag": "ea92843d-0ccb-424c-b494-486ee5a31616"
+          },
+          {
+            "name": "Plan",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "CALCULATE([Amount], Scenario[ScenarioDescription]=\"Plan\")",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "lineageTag": "9c98b4d7-1a23-4652-8943-e426fc46bee0"
+          },
+          {
+            "name": "Var LE1",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "[Actual]-[LE1]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "lineageTag": "77f56a52-abea-46a1-b1fd-ac4b1edabf0f"
+          },
+          {
+            "name": "Var LE2",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "[Actual]-[LE2]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "lineageTag": "3e08a45a-a2dd-40f2-b0cc-2519bd7bfe97"
+          },
+          {
+            "name": "Var LE3",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "[Actual]-[LE3]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "lineageTag": "a0b3065d-cd50-4e00-84ca-be7e18a37e6f"
+          },
+          {
+            "name": "Var Plan",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "[Actual]-[Plan]",
+            "lineageTag": "250ac8af-9da5-488d-a94e-fd4de4f48f5c"
+          },
+          {
+            "name": "Var LE1 %",
+            "expression": "DIVIDE([Var LE1],[LE1], BLANK())",
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "cfce41e8-563d-4ca9-84e3-9c9704ce97c9"
+          },
+          {
+            "name": "Var LE2 %",
+            "expression": "DIVIDE([Var LE2],[LE2], BLANK())",
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "85ff3109-1565-4ac4-82ab-5a4479354905"
+          },
+          {
+            "name": "Var LE3 %",
+            "expression": "DIVIDE([Var LE3],[LE3], BLANK())",
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "ce6160dc-805b-495c-b207-fa5a1f470c75"
+          },
+          {
+            "name": "Var Plan %",
+            "expression": "DIVIDE([Var Plan],[Plan], BLANK())",
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "49a8a760-2193-4b12-9511-a8f7ec2bf5db"
+          },
+          {
+            "name": "Actual/Plan",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "expression": "[Actual]",
+            "formatString": "\\$#,0;(\\$#,0);\\$#,0",
+            "kpi": {
+              "annotations": [
+                {
+                  "name": "GoalType",
+                  "value": "Measure"
+                },
+                {
+                  "name": "KpiStatusType",
+                  "value": "LinearReversed"
+                },
+                {
+                  "name": "KpiThresholdType",
+                  "value": "Percentage"
+                },
+                {
+                  "name": "KpiThresholdOrdering",
+                  "value": "Ascending"
+                },
+                {
+                  "name": "KpiThresholdCount",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_0",
+                  "value": "100"
+                },
+                {
+                  "name": "KpiThreshold_1",
+                  "value": "110"
+                }
+              ],
+              "statusExpression": [
+                "var x='Fact'[Actual/Plan]/'Fact'[_Actual/Plan Goal] return",
+                "if(ISBLANK(x),BLANK(),",
+                "        If(x<1,1,",
+                "\t    If(x<1.1,0,-1)",
+                "    )",
+                ")",
+                ""
+              ],
+              "statusGraphic": "Traffic Light - Single",
+              "targetExpression": "'Fact'[Plan]",
+              "targetFormatString": "\\$#,0;(\\$#,0);\\$#,0"
+            },
+            "lineageTag": "c1dad914-8a2f-4ee6-be9e-3eded0cda840"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\mad\\Dropbox\\Work\\Obvience\\IP\\IT\\Data\\Clean\\Data.xlsx\"), null, true),",
+                "    Sheet = Source{[Item=\"Fact\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Sheet),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Promoted Headers\", {{\"Date\", \"Date\"}, {\"Value\", \"Value\"}, {\"Department\", \"Department\"}, {\"Cost Element ID\", \"Cost Element ID\"}, {\"Country ID\", \"Country/Region ID\"}, {\"Business Area ID\", \"Business Area ID\"}, {\"IT Sub Area ID\", \"IT Sub Area ID\"}, {\"Scenario ID\", \"Scenario ID\"}}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\", {{\"Date\", type datetime}, {\"Value\", type number}, {\"Department\", type number}, {\"Cost Element ID\", type text}, {\"Country/Region ID\", type number}, {\"Business Area ID\", type number}, {\"IT Sub Area ID\", type number}, {\"Scenario ID\", type number}})",
+                " in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "IT Area",
+        "columns": [
+          {
+            "name": "IT Area",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "638341bc-5826-4291-b5b2-099fc233fbde",
+            "sourceColumn": "IT Area",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IT Sub Area",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "77d1b1bd-2a84-4815-8f37-7b473b18b213",
+            "sourceColumn": "IT Sub Area",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IT Sub Area ID",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "192535ae-4927-48c8-8716-37807bd0f8ba",
+            "sourceColumn": "IT Sub Area ID",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "f6a83a88-1c66-48e7-9c60-58f3afc2dc3d",
+        "partitions": [
+          {
+            "name": "IT Area",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\mad\\Dropbox\\Work\\Obvience\\IP\\IT\\Data\\Clean\\Data.xlsx\"), null, true),",
+                "    Sheet = Source{[Item=\"IT Area\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Sheet),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Promoted Headers\", {{\"IT Area\", \"IT Area\"}, {\"IT Sub Area\", \"IT Sub Area\"}, {\"IT Sub Area ID\", \"IT Sub Area ID\"}}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\", {{\"IT Area\", type text}, {\"IT Sub Area\", type text}, {\"IT Sub Area ID\", type number}})",
+                " in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Scenario",
+        "columns": [
+          {
+            "name": "Scenario",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4f4b059b-435b-48a1-af48-d1fbfc9e9924",
+            "sortByColumn": "Scenario ID",
+            "sourceColumn": "Scenario",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Scenario ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "isHidden": true,
+            "lineageTag": "e29c8068-f3a4-4638-a0de-cd10dce1ff42",
+            "sourceColumn": "Scenario ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ScenarioDescription",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6d1b63b9-4365-4e9b-a2bb-f397e6095043",
+            "sourceColumn": "ScenarioDescription",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "411387df-c057-4c2e-8c18-b4800f11ddab",
+        "partitions": [
+          {
+            "name": "Scenario",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\mad\\Dropbox\\Work\\Obvience\\IP\\IT\\Data\\Clean\\Data.xlsx\"), null, true),",
+                "    Sheet = Source{[Item=\"Scenario\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Sheet),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Promoted Headers\", {{\"Scenario\", \"Scenario\"}, {\"Scenario ID\", \"Scenario ID\"}, {\"ScenarioDescription\", \"ScenarioDescription\"}}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\", {{\"Scenario\", type text}, {\"Scenario ID\", type number}, {\"ScenarioDescription\", type text}})",
+                " in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Range",
+        "columns": [
+          {
+            "name": "www.obvience.com",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "00483fd8-d70f-4710-9c7b-304bad644c7c",
+            "sourceColumn": "www.obvience.com",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "02ababc9-b48e-4805-b86e-418c020448eb",
+        "partitions": [
+          {
+            "name": "Range",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"hY4xTgNBDEWv8pUKCnIIJIoUiEhINFGK2Rln12DGI9uTaG/DWTgZuysKOirb+rbfO512L8OVqWYCO1LF4fVtKWVra5AI5ehJcDRtZDHj7nC8X6LchxRquGjuTgVa8czZ1PUSeOzOldx/X/C4AvbfX9AF9rTCbmofjizqJDNuHNOf81AUupJow0AeaJZycCbfzGLSPk4BoVTIfOK2SBje+2d78EgWXMdtsVATndfpHzO4Sg/W6vvd+fwD\", BinaryEncoding.Base64), Compression.Deflate))),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(Source, {{\"Column1\", \"www.obvience.com\"}}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns\", {{\"www.obvience.com\", type text}})",
+                " in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DateTableTemplate_5db4a9d0-37ae-4eb8-b985-081b6a9bccc6",
+        "annotations": [
+          {
+            "name": "__PBI_TemplateDateTable",
+            "value": "true"
+          },
+          {
+            "name": "DefaultItem",
+            "value": "DateHierarchy"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "1eb89f18-5e95-45cc-b352-9a75ca61b155",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "4d748888-9cc3-47ce-ae9f-367105ad6319",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "45f3df68-b903-415d-8c55-87e83c746121",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "be589c71-6454-488d-85b8-060124fd4673",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "b4d678fd-8b14-416b-800f-869a7048c913",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "938beda4-fd3d-4394-9b60-eff8cb4b646f",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "596bd89a-4f4f-4fa6-af06-467a4fd49d71",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "dacd0142-afc0-471b-88b4-9bfcd1886b60",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "27f4c0b4-4a3e-4ac6-8922-5803fb28e75c",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "1a896b59-a7f7-4eb3-8a52-00400d7af2ac",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "e529044b-7223-4431-b728-9b718e4166b4",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "d7403331-9176-44bf-94f9-c69728a43fd3"
+          }
+        ],
+        "isHidden": true,
+        "isPrivate": true,
+        "lineageTag": "dbff704b-8d5c-4376-a76e-9d6d42059f6d",
+        "partitions": [
+          {
+            "name": "DateTableTemplate_5db4a9d0-37ae-4eb8-b985-081b6a9bccc6-db4ef748-4da9-4455-a73c-0c1645c85a2b",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(2015,1,1), Date(2015,1,1))",
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "LocalDateTable_c659a3fc-ad91-4f80-b458-6b22a6d14a66",
+        "annotations": [
+          {
+            "name": "__PBI_LocalDateTable",
+            "value": "true"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "8d5d81ff-9be7-48d6-afa6-a1efc434a7b3",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "6e67bd05-b850-45f2-9975-0f6a4f683530",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "3b0bdf3f-aa82-4dc8-80f5-7d1de6df5c1a",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "e1b6c5f9-520e-43e0-99ba-2528744e14e7",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "028b4fca-f45b-4f4b-9ab5-489dea61da62",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "35c71db4-e283-467c-b32a-8529abee9445",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "94840cbb-e357-4010-b09d-c4f72d24cb01",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "d009979f-db6e-4b1a-b9d3-1d2904abec51",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "64756dfb-b2ab-41b1-ad48-2bee51768884",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "85c57268-8e7c-4b36-862f-ac6f4fd3ce05",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "fcf16b5f-f5b4-4cd3-8cd7-68723290ce70",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "29e62dd3-06d7-4c6d-a1e3-ac93daf0edae"
+          }
+        ],
+        "isHidden": true,
+        "lineageTag": "ea1c994f-4467-4838-b0b3-b6e3e4ba8c82",
+        "partitions": [
+          {
+            "name": "LocalDateTable_c659a3fc-ad91-4f80-b458-6b22a6d14a66-befc4558-5178-4a6c-8daa-0449b38c9931",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(Year(MIN('Date'[Date])), 1, 1), Date(Year(MAX('Date'[Date])), 12, 31))",
+              "type": "calculated"
+            }
+          }
+        ],
+        "showAsVariationsOnly": true
+      }
+    ]
+  }
+}
