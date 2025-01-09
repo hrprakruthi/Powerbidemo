@@ -98,7 +98,17 @@
       "height": 720.00,
       "name": "5bc3bc8f22493be33644",
       "ordinal": 4,
-      "visualContainers": [],
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"a290af8c6e64c26ddd39\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10,\"y\":0,\"width\":280,\"height\":280,\"z\":0,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Country Region.Country/Region\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Cost Element.Cost element name)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Country Region\",\"Type\":0},{\"Name\":\"c1\",\"Entity\":\"Cost Element\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Country/Region\"},\"Name\":\"Country Region.Country/Region\",\"NativeReferenceName\":\"Country/Region\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c1\"}},\"Property\":\"Cost element name\"}},\"Function\":5},\"Name\":\"CountNonNull(Cost Element.Cost element name)\",\"NativeReferenceName\":\"Count of Cost element name\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c1\"}},\"Property\":\"Cost element name\"}},\"Function\":5}}}]},\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 280.00,
+          "width": 280.00,
+          "x": 10.00,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
       "width": 1280.00
     },
     {
